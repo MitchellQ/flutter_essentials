@@ -2,12 +2,15 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_essentials/utils/constants.dart';
 import 'package:http/http.dart' as http;
 
 import '../drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  static const String routeName = '/home';
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -18,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   // final TextEditingController _nameController = TextEditingController();
 
   var url = "https://jsonplaceholder.typicode.com/photos";
-  var data;
+  dynamic data;
 
   @override
   void initState() {
@@ -43,6 +46,14 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Text("Awesome App"),
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                Constants.prefs?.setBool("loggedIn", true);
+                Navigator.pushReplacementNamed(context);
+              }),
+        ],
       ),
       body: data != null
           ? ListView.builder(
