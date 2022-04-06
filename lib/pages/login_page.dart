@@ -15,9 +15,9 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    final formKey = GlobalKey<FormState>();
-    final _usernameController = TextEditingController();
-    final _passwordController = TextEditingController();
+    // final formKey = GlobalKey<FormState>();
+    // final _usernameController = TextEditingController();
+    // final _passwordController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
@@ -45,20 +45,20 @@ class _LoginPageState extends State<LoginPage> {
                         children: <Widget>[
                           const SizedBox(height: 20),
                           TextFormField(
-                            controller: _usernameController,
+                            // controller: _usernameController,
                             keyboardType: TextInputType.emailAddress,
-                            validator: (s) {},
-                            decoration: InputDecoration(
+                            // validator: (s) {},
+                            decoration: const InputDecoration(
                               hintText: "Enter email",
                               labelText: "Username",
                             ),
                           ),
                           TextFormField(
-                            controller: _usernameController,
+                            // controller: _usernameController,
                             keyboardType: TextInputType.text,
-                            validator: (s) {},
+                            // validator: (s) {},
                             obscureText: true,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintText: "Enter password",
                               labelText: "Password",
                             ),
