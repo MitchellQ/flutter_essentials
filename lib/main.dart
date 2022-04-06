@@ -8,45 +8,101 @@ void main() {
       )));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  var myText = "Change My Name";
+  final TextEditingController _nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: const Text("Awesome App"),
       ),
-      body: Container(
-        color: Colors.teal,
-        height: 100,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Center(
+          child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: SingleChildScrollView(
+          child: Card(
+            child: Column(
+              children: <Widget>[
+                Image.asset(
+                  "assets/bg.jpg",
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  myText,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      hintText: "Enter some text here",
+                      labelText: "Name",
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      )),
+      drawer: Drawer(
+        child: ListView(
           children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              color: Colors.red,
+            // DrawerHeader(
+            //   child: Text("Hi I am a drawer"),
+            //   decoration: BoxDecoration(color: Colors.purple),
+            // ),
+            const UserAccountsDrawerHeader(
+              accountName: Text("Mitchell Quarrie"),
+              accountEmail: Text("mitchellq@missionreadyhq.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                  "https://img.nzdating.com/photos/p/b/18b9st_FGIORf5f3afVlbw--.jpg",
+                ),
+              ),
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              color: Colors.yellow,
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text("Mitchell Quarrie"),
+              subtitle: const Text("Developer"),
+              trailing: const Icon(Icons.edit),
+              onTap: () {},
             ),
-            Container(
-              padding: const EdgeInsets.all(8),
-              width: 100,
-              height: 100,
-              alignment: Alignment.center,
-              color: Colors.green,
+            const ListTile(
+              leading: Icon(Icons.email),
+              title: Text("Test"),
+              subtitle: Text("Developer"),
+              trailing: Icon(Icons.add),
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          myText = _nameController.text;
+          setState(() {});
+        },
+        child: const Icon(Icons.send),
       ),
     );
   }
