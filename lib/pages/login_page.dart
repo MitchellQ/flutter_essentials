@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_essentials/pages/home_page.dart';
-import 'package:flutter_essentials/utils/constants.dart';
+import '../utils/constants.dart';
+import 'home_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

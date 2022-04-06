@@ -2,10 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_essentials/utils/constants.dart';
 import 'package:http/http.dart' as http;
 
-import '../drawer.dart';
+import '../utils/constants.dart';
+import '../widgets/drawer.dart';
+import 'login_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -51,7 +52,7 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(Icons.exit_to_app),
               onPressed: () {
                 Constants.prefs?.setBool("loggedIn", true);
-                Navigator.pushReplacementNamed(context);
+                Navigator.pushReplacementNamed(context, LoginPage.routeName);
               }),
         ],
       ),
