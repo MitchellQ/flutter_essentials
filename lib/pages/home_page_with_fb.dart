@@ -55,12 +55,12 @@ class HomePageFb extends StatelessWidget {
               return ListView.builder(
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(snapshot.data![index]["title"]),
-                    subtitle: Text("ID: ${snapshot.data![index]["id"]}"),
-                    leading: Image.network(snapshot.data![index]["url"]),
+                    title: Text(snapshot.data?[index]["title"]),
+                    subtitle: Text("ID: ${snapshot.data?[index]["id"]}"),
+                    leading: Image.network(snapshot.data?[index]["url"]),
                   );
                 },
-                itemCount: snapshot.data!.length,
+                itemCount: snapshot.data?.length ?? 0,
               );
 
             default:
@@ -69,13 +69,13 @@ class HomePageFb extends StatelessWidget {
         },
       ),
       drawer: const MyDrawer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // myText = _nameController.text;
-          // setState(() {});
-        },
-        child: const Icon(Icons.refresh),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     myText = _nameController.text;
+      //     setState(() {});
+      //   },
+      //   child: const Icon(Icons.refresh),
+      // ),
     );
   }
 }
