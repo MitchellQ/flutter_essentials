@@ -3,6 +3,7 @@ import 'package:flutter_essentials/utils/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'pages/home_page.dart';
+import 'pages/home_page_with_fb.dart';
 import 'pages/login_page.dart';
 
 Future main() async {
@@ -22,14 +23,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Constants.prefs?.getBool("loggedIn") == true
-            ? HomePage()
-            : LoginPage(),
+            ? const HomePageFb()
+            : const LoginPage(),
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
         ),
         routes: {
-          LoginPage.routeName: ((context) => LoginPage()),
-          HomePage.routeName: ((context) => HomePage()),
+          LoginPage.routeName: ((context) => const LoginPage()),
+          HomePage.routeName: ((context) => const HomePage()),
         });
   }
 }
