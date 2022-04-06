@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text("Awesome App"),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () {
                 Constants.prefs?.setBool("loggedIn", true);
                 Navigator.pushReplacementNamed(context, LoginPage.routeName);
